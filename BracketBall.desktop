@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BracketBall
+Exec=qmlscene $@ Main.qml
+Icon=bracketball.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+

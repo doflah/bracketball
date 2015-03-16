@@ -1,0 +1,17 @@
+{
+    "name": "bracketball.doflah",
+    "description": "description of bracketball",
+    "architecture": "all",
+    "title": "bracketball",
+    "hooks": {
+        "BracketBall": {
+            "apparmor": "BracketBall.apparmor",
+            "desktop":  "BracketBall.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": "Dennis O'Flaherty <dennis.oflaherty@gmail.com>",
+    "framework" : "ubuntu-sdk-14.10"
+}
+
+
