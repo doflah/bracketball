@@ -27,7 +27,7 @@ MainView {
     property var regions: ["Midwest", "West", "East", "South"]
 
     Page {
-        title: i18n.tr("Baller")
+        title: i18n.tr("Bracketball")
 
         head.actions: [
             Action {
