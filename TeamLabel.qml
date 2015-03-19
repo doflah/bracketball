@@ -5,6 +5,7 @@ Item {
 
     property var game;
     property bool isTop: false
+    property bool isLeft: true
 
     property var team: ((game.away.isTop === "T" && isTop) || (game.away.isTop === "F" && !isTop)) ? game.away : game.home
 
@@ -24,7 +25,8 @@ Item {
         visible: isTop
         color: "black"
         width: 1
-        anchors.right: parent.right
+        anchors.right: isLeft ? parent.right: undefined
+        anchors.left: isLeft ? undefined: parent.left
         anchors.top: teamName.bottom
         anchors.bottom: parent.bottom
     }
@@ -33,7 +35,8 @@ Item {
         visible: !isTop
         color: "black"
         width: 1
-        anchors.right: parent.right
+        anchors.right: isLeft ? parent.right: undefined
+        anchors.left: isLeft ? undefined: parent.left
         anchors.top: parent.top
         anchors.bottom: teamName.bottom
     }
@@ -55,7 +58,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         height: units.gu(5)
         width: height
-        visible: game.contestId !== 0
+        visible: game.away.names.short !== ""
         source: team.iconURL ? "http://i.turner.ncaa.com/dr/ncaa/ncaa/release/" +  team.iconURL : ""
     }
 
@@ -63,7 +66,7 @@ Item {
         anchors.left: seed.right
         anchors.leftMargin: units.gu(1)
         anchors.verticalCenter: parent.verticalCenter
-        height: units.gu(5)
+        height: units.gu(4)
         width: height
         visible: !logo.visible
         name: "help"

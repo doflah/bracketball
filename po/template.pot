@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-16 00:02-0400\n"
+"POT-Creation-Date: 2015-03-18 23:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Main.qml:27
-msgid "Bracketball"
+#: Main.qml:30
+msgid "Baller"
+msgstr ""
+
+#: Main.qml:35 Main.qml:68
+msgid "Region"
+msgstr ""
+
+#: Main.qml:83
+msgid "Close"
 msgstr ""

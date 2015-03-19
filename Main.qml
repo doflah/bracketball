@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 
 /*!
     \brief MainView with a Label and Button elements.
@@ -22,21 +23,65 @@ MainView {
     height: units.gu(75)
 
     property var tournament;
+    property int n: 0
+    property var regions: ["Midwest", "West", "East", "South"]
 
     Page {
-        title: i18n.tr("Bracketball")
+        title: i18n.tr("Baller")
+
+        head.actions: [
+            Action {
+                iconName: "browser-tabs"
+                text: i18n.tr("Region")
+                onTriggered: PopupUtils.open(regionPicker)
+            }
+        ]
 
         Flickable {
             anchors.fill: parent
             contentHeight: 16 * units.gu(5)
             contentWidth: 4 * units.gu(30)
             Repeater {
-                model: new Array(15)
+                // we want a model of 15 games that depends on the value of n
+                model: [n, n, n, n, n, n, n, n, n, n, n, n, n, n, n]
                 delegate: GameLabel {
-                    anchors.topMargin: units.gu(index < 8 ? index * 10 : index < 12 ? (index - 8) * 20 : index < 14 ? (index - 12) * 40 : 0)
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                    game: getGame(tournament, index < 8 ? 201 + index : index < 12 ? 301 + index - 8 : index < 14 ? 401 + index - 12 : 501)
+                    leftBracket: n < 2
+                    anchors.topMargin: units.gu(
+                        index <  8 ? index * 10 :
+                        index < 12 ? (index - 8) * 20 :
+                        index < 14 ? (index - 12) * 40 :
+                        0)
+                    game: getGame(tournament,
+                        index <  8 ? 201 + n * 8 + index :
+                        index < 12 ? 301 + n * 4 + index - 8 :
+                        index < 14 ? 401 + n * 2 + index - 12 :
+                        501 + n)
+                }
+            }
+        }
+
+        Component {
+            id: regionPicker
+
+            Dialog {
+                id: regionPickerDlg
+                title: i18n.tr("Region")
+
+                Grid {
+                    width: units.gu(10)
+                    height: units.gu(20)
+                    columns: 2
+                    rows: 2
+
+                    RegionButton { region: 0 }
+                    RegionButton { region: 2 }
+                    RegionButton { region: 1 }
+                    RegionButton { region: 3 }
+                }
+
+                Button {
+                    text: i18n.tr("Close")
+                    onClicked: PopupUtils.close(regionPickerDlg);
                 }
             }
         }
